@@ -1,0 +1,17 @@
+C:\Users\Konstantin\Documents\Projects\EmergencyApp_v2\EmergencyApp_v2.UITests\bin\Debug\EmergencyApp_v2.UITests.dll
+C:\Users\Konstantin\Documents\Projects\EmergencyApp_v2\EmergencyApp_v2.UITests\bin\Debug\EmergencyApp_v2.UITests.pdb
+C:\Users\Konstantin\Documents\Projects\EmergencyApp_v2\EmergencyApp_v2.UITests\bin\Debug\nunit.framework.dll
+C:\Users\Konstantin\Documents\Projects\EmergencyApp_v2\EmergencyApp_v2.UITests\bin\Debug\Xamarin.UITest.dll
+C:\Users\Konstantin\Documents\Projects\EmergencyApp_v2\EmergencyApp_v2.UITests\bin\Debug\nunit.framework.xml
+C:\Users\Konstantin\Documents\Projects\EmergencyApp_v2\EmergencyApp_v2.UITests\bin\Debug\Xamarin.UITest.xml
+C:\Users\Konstantin\Documents\Projects\EmergencyApp_v2\EmergencyApp_v2.UITests\obj\Debug\EmergencyApp_v2.UITests.csprojResolveAssemblyReference.cache
+C:\Users\Konstantin\Documents\Projects\EmergencyApp_v2\EmergencyApp_v2.UITests\obj\Debug\EmergencyApp_v2.UITests.dll
+C:\Users\Konstantin\Documents\Projects\EmergencyApp_v2\EmergencyApp_v2.UITests\obj\Debug\EmergencyApp_v2.UITests.pdb
+C:\Users\Konstantin\Documents\Projects\Emergency_App_V2-master\EmergencyApp_v2.UITests\bin\Debug\EmergencyApp_v2.UITests.dll
+C:\Users\Konstantin\Documents\Projects\Emergency_App_V2-master\EmergencyApp_v2.UITests\bin\Debug\EmergencyApp_v2.UITests.pdb
+C:\Users\Konstantin\Documents\Projects\Emergency_App_V2-master\EmergencyApp_v2.UITests\bin\Debug\nunit.framework.dll
+C:\Users\Konstantin\Documents\Projects\Emergency_App_V2-master\EmergencyApp_v2.UITests\bin\Debug\Xamarin.UITest.dll
+C:\Users\Konstantin\Documents\Projects\Emergency_App_V2-master\EmergencyApp_v2.UITests\bin\Debug\nunit.framework.xml
+C:\Users\Konstantin\Documents\Projects\Emergency_App_V2-master\EmergencyApp_v2.UITests\bin\Debug\Xamarin.UITest.xml
+C:\Users\Konstantin\Documents\Projects\Emergency_App_V2-master\EmergencyApp_v2.UITests\obj\Debug\EmergencyApp_v2.UITests.dll
+C:\Users\Konstantin\Documents\Projects\Emergency_App_V2-master\EmergencyApp_v2.UITests\obj\Debug\EmergencyApp_v2.UITests.pdb

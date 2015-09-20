@@ -1,0 +1,28 @@
+﻿<Properties StartupItem="EmergencyApp_v2.csproj" RefactoringSettings.EnableRefactorings="True">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.BH90MBSF1L" />
+  <MonoDevelop.Ide.Workbench>
+    <Files>
+      <File FileName="SearchActivity.cs" Line="25" Column="55" />
+      <File FileName="HomeFragment.cs" Line="28" Column="79" />
+      <File FileName="MainActivity.cs" Line="200" Column="73" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="EmergencyApp_v2" expanded="True">
+            <Node name="EmergencyApp_v2" expanded="True" selected="True">
+              <Node name="ComponentReferenceFolder" expanded="True" />
+              <Node name="Packages" expanded="True" />
+              <Node name="Properties" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.EmergencyApp__v2 AndroidDesignerPreferredDevice="Nexus 4" AndroidDeviceId-Debug="BH90MBSF1L" />
+</Properties>

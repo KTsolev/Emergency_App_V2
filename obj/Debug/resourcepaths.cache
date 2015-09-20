@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Paths>
+  <AdditionalAndroidResourcePaths>C:\Users\Konstantin\Documents\Projects\Emergency_App_V2-master\packages\Xamarin.GooglePlayServices.22.0.0.0\lib\MonoAndroid41\22.0.0\embedded;C:\Users\Konstantin\AppData\Local\Xamarin\Android.Support.v4\22.2.1\embedded;C:\Users\Konstantin\AppData\Local\Xamarin\Android.Support.v7.AppCompat\22.2.1\embedded;C:\Users\Konstantin\AppData\Local\Xamarin\Android.Support.v7.MediaRouter\22.2.1\embedded</AdditionalAndroidResourcePaths>
+  <AdditionalJavaLibraryReferences>C:\Users\Konstantin\Documents\Projects\Emergency_App_V2-master\packages\Xamarin.GooglePlayServices.22.0.0.0\lib\MonoAndroid41\22.0.0\embedded\classes.jar;C:\Users\Konstantin\AppData\Local\Xamarin\Android.Support.v4\22.2.1\embedded\classes.jar;C:\Users\Konstantin\AppData\Local\Xamarin\Android.Support.v4\22.2.1\embedded\libs\internal_impl-22.2.1.jar;C:\Users\Konstantin\AppData\Local\Xamarin\Android.Support.v7.AppCompat\22.2.1\embedded\classes.jar;C:\Users\Konstantin\AppData\Local\Xamarin\Android.Support.v7.MediaRouter\22.2.1\embedded\classes.jar;C:\Users\Konstantin\AppData\Local\Xamarin\Android.Support.v7.MediaRouter\22.2.1\embedded\libs\internal_impl-22.2.1.jar</AdditionalJavaLibraryReferences>
+  <AdditionalNativeLibraryReferences></AdditionalNativeLibraryReferences>
+</Paths>
