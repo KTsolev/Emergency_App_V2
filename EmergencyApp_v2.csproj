@@ -63,6 +63,8 @@
     <Compile Include="SearchActivity.cs" />
     <Compile Include="HomeFragment.cs" />
     <Compile Include="SearchFragment.cs" />
+    <Compile Include="GetPoisFragment.cs" />
+    <Compile Include="MyOnTouchEventHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -235,6 +237,7 @@
     <AndroidResource Include="Resources\layout\selectable_background_example.xml" />
     <AndroidResource Include="Resources\layout\spinner_background_ab_example.xml" />
     <AndroidResource Include="Resources\layout\tab_indicator_ab_example.xml" />
+    <AndroidResource Include="Resources\layout\GetAllPoisFragmentLayout.axml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>

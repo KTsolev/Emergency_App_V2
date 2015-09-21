@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,7 +16,7 @@ using Android.Locations;
 
 namespace EmergencyApp_v2
 {
-	public class SearchFragment : Fragment
+	public class SearchFragment : Fragment, View.IOnTouchListener
 	{   
 		private MapView MapView;
 		private GoogleMap Map;
@@ -25,14 +24,38 @@ namespace EmergencyApp_v2
 		private Location MyLastLocation;
 		private Marker NmtMarker;
 		private LatLng Lat;
+		private Button ShowPois;
+		private Fragment PoisFragment;
+		private FrameLayout FragmentContainer;
+		private float lastPositionX;
 
 		public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 		{
 			var view = inflater.Inflate(Resource.Layout.SearchFragmentLayout, null);
 			MapView = view.FindViewById<MapView>(Resource.Id.mapView);
+			ShowPois = view.FindViewById<Button>(Resource.Id.getAllPois);
+			FragmentContainer= view.FindViewById<FrameLayout>(Resource.Id.poisContainer);
+			FragmentContainer.SetOnTouchListener (this);
+
 			MapView.OnCreate(savedInstanceState);
+
+			var trans = Activity.FragmentManager.BeginTransaction ();
+			PoisFragment = new GetPoisFragment ();
+			trans.Add (FragmentContainer.Id, PoisFragment, "PoisFragment");
+			trans.Show (PoisFragment);
+			trans.Commit ();
+
+
+			ShowPois.Click += (object sender, EventArgs e) => {
+				if(FragmentContainer.TranslationX >= 1000)
+				{
+					var interpolator = new Android.Views.Animations.AnticipateOvershootInterpolator(5);
+					FragmentContainer.Animate().SetInterpolator(interpolator).TranslationXBy(-100).SetDuration(500);
+				}
+			};
+				
 			return view;
-		}
+		} 
 
 		public override void OnActivityCreated(Bundle p0)
 		{
@@ -82,6 +105,29 @@ namespace EmergencyApp_v2
 			}
 		}
 
+		public bool OnTouch(View v, MotionEvent e)
+		{
+			switch (e.Action) 
+			{
+			case MotionEventActions.Down: 
+				lastPositionX = e.GetX ();
+				Log.Debug ("Touch position: " , lastPositionX+"");
+				return true;
+			case MotionEventActions.Move:
+				var currentPositionX = e.GetX ();
+				Log.Debug ("Touch position: " , currentPositionX+"");
+				var delta = currentPositionX - lastPositionX;
+				Log.Debug ("Touch delta: " , delta+"");
+				var translation = v.TranslationX;
+				translation -= delta;
+				if (translation < 0)
+					translation = 0;
+				v.TranslationX = translation;
+				return true;
+			default:
+				return v.OnTouchEvent (e);
+			}
+		}
 		public override void OnDestroyView()
 		{
 			base.OnDestroyView();

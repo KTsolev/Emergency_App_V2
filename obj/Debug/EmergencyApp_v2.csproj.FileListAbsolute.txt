@@ -203,3 +203,4 @@ C:\Users\Konstantin\Documents\Projects\Emergency_App_V2-master\obj\Debug\res\lay
 C:\Users\Konstantin\Documents\Projects\Emergency_App_V2-master\obj\Debug\res\layout\selectable_background_example.xml
 C:\Users\Konstantin\Documents\Projects\Emergency_App_V2-master\obj\Debug\res\layout\spinner_background_ab_example.xml
 C:\Users\Konstantin\Documents\Projects\Emergency_App_V2-master\obj\Debug\res\layout\tab_indicator_ab_example.xml
+C:\Users\Konstantin\Documents\Projects\Emergency_App_V2-master\obj\Debug\res\layout\getallpoisfragmentlayout.xml

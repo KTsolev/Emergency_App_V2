@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:p1="http://schemas.android.com/apk/res/android"
-    p1:orientation="vertical"
+<FrameLayout xmlns:p1="http://schemas.android.com/apk/res/android"
+    p1:orientation="horizontal"
     p1:minWidth="25px"
     p1:minHeight="25px"
     p1:layout_width="match_parent"
@@ -11,4 +11,17 @@
         p1:layout_width="match_parent"
         p1:layout_height="match_parent"
         p1:id="@+id/mapView" />
-</LinearLayout>
+    <Button
+        p1:text="Get All Nearby Pois"
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/getAllPois" />
+    <FrameLayout xmlns:tools="http://schemas.android.com/tools"
+        p1:layout_width="400dp"
+        p1:layout_height="match_parent"
+        p1:id="@+id/poisContainer"
+        p1:layout_gravity="right"
+        p1:translationX="400dp"
+        tools:visibility="visible"
+        p1:focusableInTouchMode="true" />
+</FrameLayout>
