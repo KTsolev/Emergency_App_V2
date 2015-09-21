@@ -17,7 +17,7 @@ using Android.App;
 
 namespace EmergencyApp_v2
 {
-	[Activity (Label = "EmergencyApp_v2", MainLauncher = true, Icon = "@drawable/icon")]
+	[Activity (Label = "EmergencyApp_v2", MainLauncher = true, Icon = "@drawable/icon", Theme="@style/Theme.Example")]
 	public class MainActivity : Activity, ILocationListener, ActionBar.ITabListener
 	{
 
@@ -47,8 +47,6 @@ namespace EmergencyApp_v2
 			ActionBar.NavigationMode = ActionBarNavigationMode.Tabs;
 			ActionBar.SetDisplayShowHomeEnabled (false);
 			ActionBar.SetDisplayShowTitleEnabled (false);
-			//ActionBar.SetCustomView (Resource.Layout.ActionBarLayout);
-			//ActionBar.SetDisplayShowCustomEnabled (true);
 			SetContentView(Resource.Layout.Main);
 
 			locationText = FindViewById<TextView>(Resource.Id.location);

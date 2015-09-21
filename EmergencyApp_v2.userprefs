@@ -1,19 +1,20 @@
 ﻿<Properties StartupItem="EmergencyApp_v2.csproj" RefactoringSettings.EnableRefactorings="True">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.BH90MBSF1L" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="SearchFragment.cs">
     <Files>
-      <File FileName="SearchActivity.cs" Line="25" Column="55" />
-      <File FileName="HomeFragment.cs" Line="28" Column="79" />
-      <File FileName="MainActivity.cs" Line="200" Column="73" />
+      <File FileName="SearchFragment.cs" Line="55" Column="35" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="EmergencyApp_v2" expanded="True">
-            <Node name="EmergencyApp_v2" expanded="True" selected="True">
+            <Node name="EmergencyApp_v2" expanded="True">
               <Node name="ComponentReferenceFolder" expanded="True" />
-              <Node name="Packages" expanded="True" />
               <Node name="Properties" expanded="True" />
+              <Node name="Resources" expanded="True">
+                <Node name="layout" expanded="True" />
+              </Node>
+              <Node name="SearchFragment.cs" selected="True" />
             </Node>
           </Node>
         </State>
