@@ -78,22 +78,6 @@ namespace EmergencyApp_v2
 			InitializeLocationManager ();
 		}
 			
-
-
-		protected override void OnResume()
-		{
-			base.OnResume();
-			if(locationProvider != null)
-				locationManager.RequestLocationUpdates(locationProvider, 0, 0, this);
-		}
-
-		protected override void OnPause()
-		{
-			base.OnPause();
-			if(locationManager != null)
-				locationManager.RemoveUpdates(this);
-		}
-
 		public void OnLocationChanged(Location location)
 		{
 			currentLocation = location;
@@ -112,6 +96,22 @@ namespace EmergencyApp_v2
 				GetCurrentAddress ();
 			}
 		}
+
+
+		protected override void OnResume()
+		{
+			base.OnResume();
+			if(locationProvider != null)
+				locationManager.RequestLocationUpdates(locationProvider, 0, 0, this);
+		}
+
+		protected override void OnPause()
+		{
+			base.OnPause();
+			if(locationManager != null)
+				locationManager.RemoveUpdates(this);
+		}
+
 
 		public void InitializeLocationManager()
 		{
@@ -155,6 +155,7 @@ namespace EmergencyApp_v2
 				addressText = deviceAddress.ToString();
 				if(currentLocation != null)
 				{
+					Pois.MyLocation = currentLocation;
 					locationText.Text = "Latitude: " + currentLocation.Latitude + ", Longitude: " + currentLocation.Longitude + ", Address: " + addressText + "";
 				}
 			}
@@ -167,7 +168,8 @@ namespace EmergencyApp_v2
 
 		private void ShowFragment (Fragment fragment)
 		{
-			if (fragment.IsVisible){
+			if (fragment.IsVisible)
+			{
 				return;
 			}
 

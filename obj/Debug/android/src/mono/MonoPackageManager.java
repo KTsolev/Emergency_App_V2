@@ -81,6 +81,7 @@ class MonoPackageManager_Resources {
 	public static final String[] Assemblies = new String[]{
 		"EmergencyApp_v2.dll",
 		"GooglePlayServicesLib.dll",
+		"Newtonsoft.Json.dll",
 		"Xamarin.Android.Support.v4.dll",
 		"Xamarin.Android.Support.v7.AppCompat.dll",
 		"Xamarin.Android.Support.v7.MediaRouter.dll",

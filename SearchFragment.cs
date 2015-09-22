@@ -46,12 +46,17 @@ namespace EmergencyApp_v2
 			trans.Commit ();
 
 
-			ShowPois.Click += (object sender, EventArgs e) => {
-				if(FragmentContainer.TranslationX >= 1000)
+			ShowPois.Click += async (object sender, EventArgs e) => {
+				Pois po = new Pois();
+				if(Lat != null)
+				{
+					po.FetchPoisrAsync(Lat.Latitude.ToString(),Lat.Longitude.ToString());
+				}
+				/*if(FragmentContainer.TranslationX >= 1000)
 				{
 					var interpolator = new Android.Views.Animations.AnticipateOvershootInterpolator(5);
 					FragmentContainer.Animate().SetInterpolator(interpolator).TranslationXBy(-100).SetDuration(500);
-				}
+				}*/
 			};
 				
 			return view;
@@ -92,7 +97,6 @@ namespace EmergencyApp_v2
 					if(MyLocation != null && MyLastLocation != null)
 					{
 						Location.DistanceBetween(MyLocation.Latitude,MyLastLocation.Latitude,MyLocation.Longitude,MyLocation.Latitude,distance);
-						Log.Debug (@"My Location is: ",distance.FirstOrDefault()+":"+distance.LastOrDefault());
 
 						if(Math.Abs(newDistance[0] - distance[0]) >= 1F && Math.Abs(newDistance[1] - distance[1]) >= 1F)
 						{	
