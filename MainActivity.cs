@@ -50,7 +50,7 @@ namespace EmergencyApp_v2
 			SetContentView(Resource.Layout.Main);
 
 			locationText = FindViewById<TextView>(Resource.Id.location);
-
+			locationText.Text = "Please wait until we find you with our spy devices :)";
 			addressText = String.Empty;
 			home = new HomeFragment ();
 			search = new SearchFragment ();
@@ -136,7 +136,7 @@ namespace EmergencyApp_v2
 		{
 			if (currentLocation == null)
 			{
-				addressText = "Can't determine the current address.";
+				addressText = "You're lucky our spy device couldn't find you :)";
 				return;
 			}
 
@@ -156,12 +156,12 @@ namespace EmergencyApp_v2
 				if(currentLocation != null)
 				{
 					Pois.MyLocation = currentLocation;
-					locationText.Text = "Latitude: " + currentLocation.Latitude + ", Longitude: " + currentLocation.Longitude + ", Address: " + addressText + "";
+					locationText.Text = "Your Location is: Latitude: " + currentLocation.Latitude + ", Longitude: " + currentLocation.Longitude + ", Address: " + addressText + "";
 				}
 			}
 			else
 			{
-				addressText = "Unable to determine the address.";
+				addressText = "You're lucky our spy devices couldn't find you :)";
 			}
 		}
 

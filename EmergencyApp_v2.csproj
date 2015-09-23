@@ -64,7 +64,6 @@
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SearchActivity.cs" />
     <Compile Include="HomeFragment.cs" />
     <Compile Include="SearchFragment.cs" />
     <Compile Include="GetPoisFragment.cs" />
@@ -243,6 +242,13 @@
     <AndroidResource Include="Resources\layout\spinner_background_ab_example.xml" />
     <AndroidResource Include="Resources\layout\tab_indicator_ab_example.xml" />
     <AndroidResource Include="Resources\layout\GetAllPoisFragmentLayout.axml" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\parmacy_icon.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\hospital_icon.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\police_icon.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\embassy_icon.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\car_repair_icon.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\fire_station_icon.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\marker_icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>

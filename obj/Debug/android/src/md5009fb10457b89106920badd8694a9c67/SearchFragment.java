@@ -4,8 +4,7 @@ package md5009fb10457b89106920badd8694a9c67;
 public class SearchFragment
 	extends android.app.Fragment
 	implements
-		mono.android.IGCUserPeer,
-		android.view.View.OnTouchListener
+		mono.android.IGCUserPeer
 {
 	static final String __md_methods;
 	static {
@@ -17,7 +16,6 @@ public class SearchFragment
 			"n_onResume:()V:GetOnResumeHandler\n" +
 			"n_onPause:()V:GetOnPauseHandler\n" +
 			"n_onLowMemory:()V:GetOnLowMemoryHandler\n" +
-			"n_onTouch:(Landroid/view/View;Landroid/view/MotionEvent;)Z:GetOnTouch_Landroid_view_View_Landroid_view_MotionEvent_Handler:Android.Views.View/IOnTouchListenerInvoker, Mono.Android, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\n" +
 			"";
 		mono.android.Runtime.register ("EmergencyApp_v2.SearchFragment, EmergencyApp_v2, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", SearchFragment.class, __md_methods);
 	}
@@ -85,14 +83,6 @@ public class SearchFragment
 	}
 
 	private native void n_onLowMemory ();
-
-
-	public boolean onTouch (android.view.View p0, android.view.MotionEvent p1)
-	{
-		return n_onTouch (p0, p1);
-	}
-
-	private native boolean n_onTouch (android.view.View p0, android.view.MotionEvent p1);
 
 	java.util.ArrayList refList;
 	public void monodroidAddReference (java.lang.Object obj)

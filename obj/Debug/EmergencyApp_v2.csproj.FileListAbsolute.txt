@@ -206,3 +206,10 @@ C:\Users\Konstantin\Documents\Projects\Emergency_App_V2-master\obj\Debug\res\lay
 C:\Users\Konstantin\Documents\Projects\Emergency_App_V2-master\obj\Debug\res\layout\getallpoisfragmentlayout.xml
 C:\Users\Konstantin\Documents\Projects\Emergency_App_V2-master\obj\Debug\R.cs.flag
 C:\Users\Konstantin\Documents\Projects\Emergency_App_V2-master\obj\Debug\uploadflags.txt
+C:\Users\Konstantin\Documents\Projects\Emergency_App_V2-master\obj\Debug\res\drawable-xxxhdpi\fire_station_icon.png
+C:\Users\Konstantin\Documents\Projects\Emergency_App_V2-master\obj\Debug\res\drawable-xxxhdpi\car_repair_icon.png
+C:\Users\Konstantin\Documents\Projects\Emergency_App_V2-master\obj\Debug\res\drawable-xxxhdpi\parmacy_icon.png
+C:\Users\Konstantin\Documents\Projects\Emergency_App_V2-master\obj\Debug\res\drawable-xxxhdpi\embassy_icon.png
+C:\Users\Konstantin\Documents\Projects\Emergency_App_V2-master\obj\Debug\res\drawable-xxxhdpi\police_icon.png
+C:\Users\Konstantin\Documents\Projects\Emergency_App_V2-master\obj\Debug\res\drawable-xxxhdpi\hospital_icon.png
+C:\Users\Konstantin\Documents\Projects\Emergency_App_V2-master\obj\Debug\res\drawable-xxxhdpi\marker_icon.png

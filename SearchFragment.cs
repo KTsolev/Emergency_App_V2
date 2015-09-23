@@ -16,18 +16,18 @@ using Android.Locations;
 
 namespace EmergencyApp_v2
 {
-	public class SearchFragment : Fragment, View.IOnTouchListener
+	public class SearchFragment : Fragment
 	{   
 		private MapView MapView;
 		private GoogleMap Map;
 		private Location MyLocation;
 		private Location MyLastLocation;
 		private Marker NmtMarker;
+		private Marker PoisMarkers;
 		private LatLng Lat;
 		private Button ShowPois;
 		private Fragment PoisFragment;
 		private FrameLayout FragmentContainer;
-		private float lastPositionX;
 
 		public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 		{
@@ -35,8 +35,6 @@ namespace EmergencyApp_v2
 			MapView = view.FindViewById<MapView>(Resource.Id.mapView);
 			ShowPois = view.FindViewById<Button>(Resource.Id.getAllPois);
 			FragmentContainer= view.FindViewById<FrameLayout>(Resource.Id.poisContainer);
-			FragmentContainer.SetOnTouchListener (this);
-
 			MapView.OnCreate(savedInstanceState);
 
 			var trans = Activity.FragmentManager.BeginTransaction ();
@@ -47,16 +45,19 @@ namespace EmergencyApp_v2
 
 
 			ShowPois.Click += async (object sender, EventArgs e) => {
-				Pois po = new Pois();
 				if(Lat != null)
 				{
-					po.FetchPoisrAsync(Lat.Latitude.ToString(),Lat.Longitude.ToString());
+					Pois.FetchPoisrAsync(Lat.Latitude.ToString(),Lat.Longitude.ToString());
 				}
-				/*if(FragmentContainer.TranslationX >= 1000)
+
+				if(Pois.NearByPois.Count > 0 && Map != null)
 				{
-					var interpolator = new Android.Views.Animations.AnticipateOvershootInterpolator(5);
-					FragmentContainer.Animate().SetInterpolator(interpolator).TranslationXBy(-100).SetDuration(500);
-				}*/
+					AddMarkersToMap();
+				}
+				else
+				{				
+					Toast.MakeText(this.Activity.BaseContext, "Sorry there is no fetched data yet!Please try again 4-5 seconds later :)!", ToastLength.Short).Show();;	
+				}
 			};
 				
 			return view;
@@ -78,8 +79,7 @@ namespace EmergencyApp_v2
 		{
 			SetUpMapIfNeeded();
 
-			if (Map != null)
-			{
+			if (Map != null) {
 				Map.MyLocationEnabled = false;
 				MyLocation = null;
 				MyLastLocation = null;
@@ -87,51 +87,32 @@ namespace EmergencyApp_v2
 				MyLastLocation = MyLocation;
 				OnLocationChanged (Lat);
 
-				float[] distance= new float[2];
-				float[] newDistance= new float[2];
+				float[] distance = new float[2];
+				float[] newDistance = new float[2];
 
 				Map.MyLocationChange += (s, e) => {
 
 					MyLastLocation = MyLocation;
 					MyLocation = e.Location;
-					if(MyLocation != null && MyLastLocation != null)
-					{
-						Location.DistanceBetween(MyLocation.Latitude,MyLastLocation.Latitude,MyLocation.Longitude,MyLocation.Latitude,distance);
+					if (MyLocation != null && MyLastLocation != null) {
+						Location.DistanceBetween (MyLocation.Latitude, MyLastLocation.Latitude, MyLocation.Longitude, MyLocation.Latitude, distance);
 
-						if(Math.Abs(newDistance[0] - distance[0]) >= 1F && Math.Abs(newDistance[1] - distance[1]) >= 1F)
-						{	
-							Lat = new LatLng(MyLocation.Latitude, MyLocation.Longitude);
+						if (Math.Abs (newDistance [0] - distance [0]) >= 1F && Math.Abs (newDistance [1] - distance [1]) >= 1F) {	
+							Lat = new LatLng (MyLocation.Latitude, MyLocation.Longitude);
 							OnLocationChanged (Lat);
-							distance=newDistance;
+							distance = newDistance;
 						}
 					}
 				};
+
+			}
+			else
+			{
+				SetUpMapIfNeeded ();
 			}
 		}
 
-		public bool OnTouch(View v, MotionEvent e)
-		{
-			switch (e.Action) 
-			{
-			case MotionEventActions.Down: 
-				lastPositionX = e.GetX ();
-				Log.Debug ("Touch position: " , lastPositionX+"");
-				return true;
-			case MotionEventActions.Move:
-				var currentPositionX = e.GetX ();
-				Log.Debug ("Touch position: " , currentPositionX+"");
-				var delta = currentPositionX - lastPositionX;
-				Log.Debug ("Touch delta: " , delta+"");
-				var translation = v.TranslationX;
-				translation -= delta;
-				if (translation < 0)
-					translation = 0;
-				v.TranslationX = translation;
-				return true;
-			default:
-				return v.OnTouchEvent (e);
-			}
-		}
+	
 		public override void OnDestroyView()
 		{
 			base.OnDestroyView();
@@ -162,6 +143,48 @@ namespace EmergencyApp_v2
 			if(null == Map)
 			{
 				Map = View.FindViewById<MapView>(Resource.Id.mapView).Map;
+			}
+		}
+
+		public void AddMarkersToMap()
+		{
+			foreach(Pois item in Pois.NearByPois)
+			{
+				LatLng lat = new LatLng (item.Lat, item.Lng);
+				int iconId = 0;
+				switch (item.Type) 
+				{
+					case "\"hospital\"":
+						iconId = Resource.Drawable.hospital_icon;
+					break;
+					case "\"pharmacy\"":
+						iconId = Resource.Drawable.parmacy_icon;
+					break;
+					case "\"police\"":
+						iconId = Resource.Drawable.police_icon;
+					break;
+					case "\"fire_station\"":
+						iconId = Resource.Drawable.fire_station_icon;
+					break;
+					case  "\"car_repair\"":
+						iconId = Resource.Drawable.car_repair_icon;
+					break;
+					case "\"embassy\"":
+						iconId = Resource.Drawable.embassy_icon;
+					break;
+					default:
+						iconId = Resource.Drawable.marker_icon;
+					break;
+				}
+
+				var markerOptions = new MarkerOptions ()
+					.SetPosition (lat)
+					.SetTitle (item.Name)
+					.SetSnippet(item.Address)
+					.InvokeIcon(BitmapDescriptorFactory.FromResource(iconId))
+					.Draggable(true);
+
+				PoisMarkers = Map.AddMarker(markerOptions);
 			}
 		}
 

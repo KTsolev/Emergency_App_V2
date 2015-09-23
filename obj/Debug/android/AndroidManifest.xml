@@ -13,7 +13,6 @@
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
-    <activity android:label="SearchActivity" android:name="md5009fb10457b89106920badd8694a9c67.SearchActivity" />
     <provider android:name="mono.MonoRuntimeProvider" android:exported="false" android:initOrder="2147483647" android:authorities="com.companyname.emergencyapp_v2.mono.MonoRuntimeProvider.__mono_init__" />
     <receiver android:name="mono.android.Seppuku">
       <intent-filter>

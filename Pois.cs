@@ -16,15 +16,15 @@ namespace EmergencyApp_v2
 	public class Pois
 	{
 
-		private float Lat {get; set;}
-		private float Lng {get; set;}
-		private string Icon {get; set;}
-		private string Name {get; set;}
-		private string Rate {get; set;}
-		private string Type {get; set;}
-		private bool IsOpen {get; set;}
-		private string Address {get; set;}
-		private float[] Distance {get; set;}
+		public float Lat { get; private set; }
+		public float Lng { get; private set; }
+		public string Icon { get; private set; }
+		public string Name { get; private set; }
+		public string Rate { get; private set; }
+		public string Type { get; private set; }
+		public bool IsOpen { get; private set; }
+		public string Address { get; private set; }
+		public float[] Distance { get; private set; }
 
 		public static Location MyLocation { get; set;}
 		public static List<Pois> NearByPois = new List<Pois>();
@@ -51,13 +51,13 @@ namespace EmergencyApp_v2
 			return sb.ToString();
 		}	
 
-		public async Task<JsonValue> FetchPoisrAsync (string latitude, string longitude)
+		public static async Task<JsonValue> FetchPoisrAsync (string latitude, string longitude)
 		{
 			// Create an HTTP web request using the URL:
 			string key="AIzaSyDIu7Ms_GGCLAnk47jweWTo4dTTv2ofcHY";
 			string[] types = { "police", "hospital", "pharmacy", "fire_station", "embassy", "car_repair" };
 			string addTypes = string.Empty;
-			int radius = 7500;
+			int radius = 10000;
 			foreach (var type in types) 
 			{
 				addTypes += type + "|";
@@ -83,7 +83,7 @@ namespace EmergencyApp_v2
 			}
 		}
 
-		public void ParseJsonData(JsonValue json)
+		public static void ParseJsonData(JsonValue json)
 		{
 			foreach(JsonValue val in json as JsonArray)
 			{
