@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:minWidth="25px"
+    android:minHeight="25px"
+    android:id="@+id/linearLayout1">
+    <RelativeLayout
+        android:layout_width="227.1dp"
+        android:layout_height="164.7dp"
+        android:id="@+id/relativeLayout1"
+        android:background="#ffc03c3f">
+        <TextView
+            android:text="Name:"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="match_parent"
+            android:layout_height="21.7dp"
+            android:id="@+id/name"
+            android:typeface="normal"
+            android:textStyle="normal"
+            android:layout_margin="5dp"
+            android:textSize="18dp" />
+        <TextView
+            android:text="Address:"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="match_parent"
+            android:layout_height="26.9dp"
+            android:layout_below="@id/name"
+            android:id="@+id/address"
+            android:typeface="normal"
+            android:textStyle="normal"
+            android:layout_margin="5dp"
+            android:textSize="18dp" />
+        <ImageView
+            android:layout_width="69.6dp"
+            android:layout_height="85.9dp"
+            android:layout_below="@id/address"
+            android:id="@+id/icon"
+            android:layout_margin="10dp" />
+        <TextView
+            android:text="Type:"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/icon"
+            android:id="@+id/type"
+            android:layout_below="@id/address"
+            android:layout_margin="10dp"
+            android:layout_marginTop="10dp"
+            android:textSize="16dp" />
+        <TextView
+            android:text="Is Opened Now:"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/type"
+            android:id="@+id/isOpened"
+            android:layout_toRightOf="@id/icon"
+            android:layout_margin="10dp"
+            android:textSize="16dp" />
+    </RelativeLayout>
+</LinearLayout>

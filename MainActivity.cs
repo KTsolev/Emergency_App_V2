@@ -14,6 +14,7 @@ using Android.Widget;
 using Android.Locations;
 using Android.Util;
 using Android.App;
+using Android.Net;
 
 namespace EmergencyApp_v2
 {
@@ -30,7 +31,8 @@ namespace EmergencyApp_v2
 		private Fragment  search;
 		private Fragment mCurrentFragment;
 		private Stack<Fragment> mStackFragments;
-
+		private ConnectivityManager connectivityManager;
+		private string provider;
 
 		static readonly string Tag = "ActionBarTabsSupport";
 
@@ -44,38 +46,70 @@ namespace EmergencyApp_v2
 		{
 
 			base.OnCreate(bundle);
-			ActionBar.NavigationMode = ActionBarNavigationMode.Tabs;
-			ActionBar.SetDisplayShowHomeEnabled (false);
-			ActionBar.SetDisplayShowTitleEnabled (false);
-			SetContentView(Resource.Layout.Main);
 
-			locationText = FindViewById<TextView>(Resource.Id.location);
-			locationText.Text = "Please wait until we find you with our spy devices :)";
-			addressText = String.Empty;
-			home = new HomeFragment ();
-			search = new SearchFragment ();
+			connectivityManager = GetSystemService(ConnectivityService) as ConnectivityManager;
+			locationManager = GetSystemService(LocationService) as LocationManager;
 
-			mCurrentFragment = home;
-			mStackFragments = new Stack<Fragment>();
+			var mobileState = connectivityManager.GetNetworkInfo(ConnectivityType.Wifi).GetState();
+			provider = LocationManager.NetworkProvider;
+			locationManager = (LocationManager)GetSystemService(LocationService);
+			if (mobileState == NetworkInfo.State.Disconnected) {
+				// We are connected via WiFi
+				AlertDialog.Builder wifiError = new AlertDialog.Builder (this);
+				AlertDialog wifiAlert = wifiError.Create ();
+				wifiAlert.SetTitle ("Error Connection");
+				wifiAlert.SetMessage ("There is no wifi connection!Please connect to wifi and try again!App now will close!");
+				wifiAlert.SetButton ("Ok", delegate {
+					wifiAlert.Dismiss ();
+					System.Environment.Exit (0);					
+				});
+			} 
+			else if (!locationManager.IsProviderEnabled (provider)) 
+			{
+				AlertDialog.Builder gpsError = new AlertDialog.Builder (this);
+				AlertDialog gpsAlert = gpsError.Create ();
+				gpsAlert.SetTitle ("Error Connection");
+				gpsAlert.SetMessage ("There is no wifi connection!Please connect to wifi and try again!App now will close!");
+				gpsAlert.SetButton ("Ok", delegate {
+					gpsAlert.Dismiss ();
+					System.Environment.Exit (0);
+				});					
+			}
+			else 
+			{
+				ActionBar.NavigationMode = ActionBarNavigationMode.Tabs;
+				ActionBar.SetDisplayShowHomeEnabled (false);
+				ActionBar.SetDisplayShowTitleEnabled (false);
+				SetContentView(Resource.Layout.Main);
 
-			var homeTab = ActionBar.NewTab();
-			homeTab.SetText(Resources.GetString(Resource.String.tab1_text));
-			homeTab.SetIcon(Resource.Drawable.home_icon);
-			homeTab.SetTabListener (this);
-			ActionBar.AddTab(homeTab);
+				locationText = FindViewById<TextView>(Resource.Id.location);
+				locationText.Text = "Please wait until we find you with our spy devices :)";
+				addressText = String.Empty;
+				home = new HomeFragment ();
+				search = new SearchFragment ();
 
-			var searchTab = ActionBar.NewTab();
-			searchTab.SetText(Resources.GetString(Resource.String.tab2_text));
-			searchTab.SetIcon(Resource.Drawable.search_icon);
-			searchTab.SetTabListener (this);
-			ActionBar.AddTab(searchTab);
+				mCurrentFragment = home;
+				mStackFragments = new Stack<Fragment>();
 
-			var trans = FragmentManager.BeginTransaction ();
-			trans.Add (Resource.Id.fragmentContainer, home, "Home");
-			trans.Add (Resource.Id.fragmentContainer, search, "Search");
-			trans.Hide (search);
-			trans.Commit ();
-			InitializeLocationManager ();
+				var homeTab = ActionBar.NewTab();
+				homeTab.SetText(Resources.GetString(Resource.String.tab1_text));
+				homeTab.SetIcon(Resource.Drawable.home_icon);
+				homeTab.SetTabListener (this);
+				ActionBar.AddTab(homeTab);
+
+				var searchTab = ActionBar.NewTab();
+				searchTab.SetText(Resources.GetString(Resource.String.tab2_text));
+				searchTab.SetIcon(Resource.Drawable.search_icon);
+				searchTab.SetTabListener (this);
+				ActionBar.AddTab(searchTab);
+
+				var trans = FragmentManager.BeginTransaction ();
+				trans.Add (Resource.Id.fragmentContainer, home, "Home");
+				trans.Add (Resource.Id.fragmentContainer, search, "Search");
+				trans.Hide (search);
+				trans.Commit ();
+				InitializeLocationManager ();	
+			}
 		}
 			
 		public void OnLocationChanged(Location location)

@@ -1,10 +1,10 @@
 ﻿<Properties StartupItem="EmergencyApp_v2.csproj" RefactoringSettings.EnableRefactorings="True">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.BH90MBSF1L" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="c:\Users\Konstantin\Documents\Projects\Emergency_App_V2-master\Pois.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="SearchFragment.cs">
     <Files>
-      <File FileName="SearchFragment.cs" Line="188" Column="4" />
-      <File FileName="MainActivity.cs" Line="82" Column="1" />
-      <File FileName="c:\Users\Konstantin\Documents\Projects\Emergency_App_V2-master\Pois.cs" Line="34" Column="4" />
+      <File FileName="SearchFragment.cs" Line="44" Column="30" />
+      <File FileName="MainActivity.cs" Line="71" Column="32" />
+      <File FileName="c:\Users\Konstantin\Documents\Projects\Emergency_App_V2-master\Pois.cs" Line="87" Column="41" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

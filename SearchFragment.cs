@@ -12,6 +12,7 @@ using Android.Util;
 using Android.Views;
 using Android.Widget;
 using Android.Locations;
+using System.Json;
 
 
 namespace EmergencyApp_v2
@@ -37,17 +38,11 @@ namespace EmergencyApp_v2
 			FragmentContainer= view.FindViewById<FrameLayout>(Resource.Id.poisContainer);
 			MapView.OnCreate(savedInstanceState);
 
-			var trans = Activity.FragmentManager.BeginTransaction ();
-			PoisFragment = new GetPoisFragment ();
-			trans.Add (FragmentContainer.Id, PoisFragment, "PoisFragment");
-			trans.Show (PoisFragment);
-			trans.Commit ();
-
-
 			ShowPois.Click += async (object sender, EventArgs e) => {
 				if(Lat != null)
 				{
-					Pois.FetchPoisrAsync(Lat.Latitude.ToString(),Lat.Longitude.ToString());
+				 	JsonValue json = await Pois.FetchPoisrAsync(Lat.Latitude.ToString(),Lat.Longitude.ToString());
+					Pois.ParseJsonData(json);	
 				}
 
 				if(Pois.NearByPois.Count > 0 && Map != null)

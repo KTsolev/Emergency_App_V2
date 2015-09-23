@@ -54,7 +54,7 @@ namespace EmergencyApp_v2
 		public static async Task<JsonValue> FetchPoisrAsync (string latitude, string longitude)
 		{
 			// Create an HTTP web request using the URL:
-			string key="AIzaSyDIu7Ms_GGCLAnk47jweWTo4dTTv2ofcHY";
+			string key="AIzaSyCeQuNmu89FN2_CvB_sPw5Glmf8L3ritTg";
 			string[] types = { "police", "hospital", "pharmacy", "fire_station", "embassy", "car_repair" };
 			string addTypes = string.Empty;
 			int radius = 10000;
@@ -76,15 +76,15 @@ namespace EmergencyApp_v2
 					// Use this stream to build a JSON document object:
 					JsonValue jsonDoc = await Task.Run (() => JsonObject.Load (stream));
 					//Log.Debug("Response: {0}", jsonDoc.ToString ());
-					ParseJsonData (jsonDoc ["results"]);
 					// Return the JSON document:
 					return jsonDoc;
 				}
 			}
 		}
 
-		public static void ParseJsonData(JsonValue json)
+		public static void ParseJsonData(JsonValue jsonDoc)
 		{
+			JsonValue json = jsonDoc ["results"];
 			foreach(JsonValue val in json as JsonArray)
 			{
 				Pois newPoi = new Pois ();
