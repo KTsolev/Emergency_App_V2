@@ -2173,11 +2173,14 @@ namespace EmergencyApp_v2
 			// aapt resource value: 0x7f0c007a
 			public const int play_pause = 2131492986;
 			
-			// aapt resource value: 0x7f0c0091
-			public const int poisContainer = 2131493009;
+			// aapt resource value: 0x7f0c0092
+			public const int poisContainer = 2131493010;
 			
 			// aapt resource value: 0x7f0c002a
 			public const int production = 2131492906;
+			
+			// aapt resource value: 0x7f0c0091
+			public const int progressBar1 = 2131493009;
 			
 			// aapt resource value: 0x7f0c0005
 			public const int progress_circular = 2131492869;

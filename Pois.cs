@@ -51,34 +51,31 @@ namespace EmergencyApp_v2
 			return sb.ToString();
 		}	
 
-		public static async Task<JsonValue> FetchPoisrAsync (string latitude, string longitude)
+		public static async Task<JsonValue> FetchPoisrAsync (string latitude, string longitude, string type)
 		{
 			// Create an HTTP web request using the URL:
 			string key="AIzaSyCeQuNmu89FN2_CvB_sPw5Glmf8L3ritTg";
-			string[] types = { "police", "hospital", "pharmacy", "fire_station", "embassy", "car_repair" };
-			string addTypes = string.Empty;
-			int radius = 10000;
-			foreach (var type in types) 
-			{
-				addTypes += type + "|";
-			}
-			string url =  "https://maps.googleapis.com/maps/api/place/search/json?location=" + latitude + "," + longitude + "&radius=" + radius + "&types=" + addTypes + "&place_id=ChIJn8qyiKzGhkcRbtP7f16_hsw&key=" + key + "";;
+			int radius = 5000;
+			string url =  "https://maps.googleapis.com/maps/api/place/search/json?location=" + latitude + "," + longitude + "&radius=" + radius + "&types=" + type + "&place_id=ChIJn8qyiKzGhkcRbtP7f16_hsw&key=" + key + "";;
 			HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create (new Uri (url));
 			request.ContentType = "application/json";
 			request.Method = "GET";
-
+			WebResponse response = null;
+			Stream stream = null;
+			JsonValue jsonDoc = null;
 			// Send the request to the server and wait for the response:
-			using (WebResponse response = await request.GetResponseAsync ())
+			using (response = await request.GetResponseAsync ())
 			{
 				// Get a stream representation of the HTTP web response:
-				using (Stream stream = response.GetResponseStream ())
+				using (stream = response.GetResponseStream ())
 				{
 					// Use this stream to build a JSON document object:
-					JsonValue jsonDoc = await Task.Run (() => JsonObject.Load (stream));
+					jsonDoc = await Task.Run (() => JsonObject.Load (stream));
 					//Log.Debug("Response: {0}", jsonDoc.ToString ());
 					// Return the JSON document:
 					return jsonDoc;
 				}
+				stream.Close ();
 			}
 		}
 

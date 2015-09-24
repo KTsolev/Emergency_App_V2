@@ -2168,8 +2168,9 @@ containing a value of this type.
         public static final int normal=0x7f0c000a;
         public static final int parentPanel=0x7f0c0041;
         public static final int play_pause=0x7f0c007a;
-        public static final int poisContainer=0x7f0c0091;
+        public static final int poisContainer=0x7f0c0092;
         public static final int production=0x7f0c002a;
+        public static final int progressBar1=0x7f0c0091;
         public static final int progress_circular=0x7f0c0005;
         public static final int progress_horizontal=0x7f0c0006;
         public static final int radio=0x7f0c004e;

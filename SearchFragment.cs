@@ -27,8 +27,9 @@ namespace EmergencyApp_v2
 		private Marker PoisMarkers;
 		private LatLng Lat;
 		private Button ShowPois;
-		private Fragment PoisFragment;
 		private FrameLayout FragmentContainer;
+		private bool IsDataReady = false;	
+		private ProgressBar ProgressBar;
 
 		public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 		{
@@ -36,25 +37,11 @@ namespace EmergencyApp_v2
 			MapView = view.FindViewById<MapView>(Resource.Id.mapView);
 			ShowPois = view.FindViewById<Button>(Resource.Id.getAllPois);
 			FragmentContainer= view.FindViewById<FrameLayout>(Resource.Id.poisContainer);
+			ProgressBar = view.FindViewById<ProgressBar>(Resource.Id.progressBar1);
 			MapView.OnCreate(savedInstanceState);
 
-			ShowPois.Click += async (object sender, EventArgs e) => {
-				if(Lat != null)
-				{
-				 	JsonValue json = await Pois.FetchPoisrAsync(Lat.Latitude.ToString(),Lat.Longitude.ToString());
-					Pois.ParseJsonData(json);	
-				}
+			ShowPois.Click += OnClickEventHandler;
 
-				if(Pois.NearByPois.Count > 0 && Map != null)
-				{
-					AddMarkersToMap();
-				}
-				else
-				{				
-					Toast.MakeText(this.Activity.BaseContext, "Sorry there is no fetched data yet!Please try again 4-5 seconds later :)!", ToastLength.Short).Show();;	
-				}
-			};
-				
 			return view;
 		} 
 
@@ -86,10 +73,10 @@ namespace EmergencyApp_v2
 				float[] newDistance = new float[2];
 
 				Map.MyLocationChange += (s, e) => {
-
 					MyLastLocation = MyLocation;
 					MyLocation = e.Location;
-					if (MyLocation != null && MyLastLocation != null) {
+					if (MyLocation != null && MyLastLocation != null)
+					{
 						Location.DistanceBetween (MyLocation.Latitude, MyLastLocation.Latitude, MyLocation.Longitude, MyLocation.Latitude, distance);
 
 						if (Math.Abs (newDistance [0] - distance [0]) >= 1F && Math.Abs (newDistance [1] - distance [1]) >= 1F) {	
@@ -180,6 +167,37 @@ namespace EmergencyApp_v2
 					.Draggable(true);
 
 				PoisMarkers = Map.AddMarker(markerOptions);
+			}
+			IsDataReady = true;
+		}
+
+		public async void OnClickEventHandler(object sender, EventArgs e)
+		{
+			ProgressBar.Visibility = Android.Views.ViewStates.Visible;
+
+			if(Lat != null)
+			{
+				JsonValue json = null;
+				string[] types = { "police", "hospital", "pharmacy", "fire_station", "embassy", "car_repair" };
+				foreach(string type in types)
+				{
+					json = await Pois.FetchPoisrAsync(Lat.Latitude.ToString(),Lat.Longitude.ToString(),type);
+					if(json!=null)
+						Pois.ParseJsonData(json);	
+					json = null;
+				}
+			}
+
+			if(Pois.NearByPois.Count > 0 && Map != null)
+			{
+				AddMarkersToMap();
+				if(IsDataReady)
+					ProgressBar.Visibility = Android.Views.ViewStates.Invisible;
+			}
+			else
+			{				
+				ProgressBar.Visibility = Android.Views.ViewStates.Invisible;
+				Toast.MakeText(this.Activity.BaseContext, "Sorry there is no fetched data yet!Please try again 4-5 seconds later :)!", ToastLength.Short).Show();;	
 			}
 		}
 

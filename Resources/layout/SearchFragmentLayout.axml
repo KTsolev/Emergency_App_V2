@@ -16,6 +16,13 @@
         p1:layout_width="match_parent"
         p1:layout_height="wrap_content"
         p1:id="@+id/getAllPois" />
+    <ProgressBar
+        p1:layout_width="50dp"
+        p1:layout_height="50dp"
+        p1:id="@+id/progressBar1"
+        p1:layout_gravity="center"
+        p1:background="#632828"
+        p1:visibility="invisible" />
     <FrameLayout xmlns:tools="http://schemas.android.com/tools"
         p1:layout_width="400dp"
         p1:layout_height="match_parent"
@@ -23,5 +30,7 @@
         p1:layout_gravity="right"
         p1:translationX="400dp"
         tools:visibility="visible"
-        p1:focusableInTouchMode="true" />
+        p1:focusableInTouchMode="true"
+        p1:minWidth="25px"
+        p1:minHeight="25px" />
 </FrameLayout>
