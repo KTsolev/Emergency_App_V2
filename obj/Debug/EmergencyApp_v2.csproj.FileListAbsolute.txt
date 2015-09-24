@@ -213,3 +213,4 @@ C:\Users\Konstantin\Documents\Projects\Emergency_App_V2-master\obj\Debug\res\dra
 C:\Users\Konstantin\Documents\Projects\Emergency_App_V2-master\obj\Debug\res\drawable-xxxhdpi\police_icon.png
 C:\Users\Konstantin\Documents\Projects\Emergency_App_V2-master\obj\Debug\res\drawable-xxxhdpi\hospital_icon.png
 C:\Users\Konstantin\Documents\Projects\Emergency_App_V2-master\obj\Debug\res\drawable-xxxhdpi\marker_icon.png
+C:\Users\Konstantin\Documents\Projects\Emergency_App_V2-master\obj\Debug\res\drawable-xxxhdpi\icon.png

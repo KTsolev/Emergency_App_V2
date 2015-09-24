@@ -78,7 +78,9 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />
-    <AndroidResource Include="Resources\drawable-hdpi\Icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\Icon.png">
+      <DependentUpon>Icon.png</DependentUpon>
+    </AndroidResource>
     <AndroidResource Include="Resources\drawable-mdpi\Icon.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\Icon.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\Icon.png" />
@@ -248,6 +250,7 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\car_repair_icon.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\fire_station_icon.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\marker_icon.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>
